@@ -1,0 +1,121 @@
+{% extends 'store/index.html' %}
+{%load static%}
+
+{% block content %}
+
+<head> 
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+</head>
+<body> 
+    <section class="header">
+        <a href="#"><img id="image1" src="{%static 'images/logo.jfif'%}" alt="logo"></a> 
+         <ul id="navbar">
+             <li><a  href="">Home </a></li>
+             <li><a href="/shop">Shop</a></li>
+             <li><a href="/blog">Blog</a></li>
+             <li><a href="/aboutUs">About us</a></li>
+             <li><a href="/contact">Contact us</a></li>
+             <li><a class="active" href="/cart"><i class="far fa-shopping-bag"></i></a></li> 
+         </ul>
+     </section>
+    <div class="Build">
+    #cart<br>
+    <p class="text">Apply a coupon code to get upto 15 % discount !!!</p>
+    </div>
+    {%if  flag%}
+   <section id="cart" class="section-p1">
+    <table width="100%">
+        <thead >
+            <tr>
+                <td>Remove</td>
+                <td> Image</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>SubTotal</td>
+                
+                {% comment %} <th>Stock before</th>
+                <th>Stock After</th> {% endcomment %}
+            </tr>
+        </thead>
+    
+        {%for item in items %}
+        <tbody>
+            <tr>
+                {% comment %} 646489   64647677 64647677 {% endcomment %}
+                {% comment %} <td><a  href="/cart"><i data-product={{item.product.id}} data-action="remove" class="far fa-times-circle ucartpdate-"></i></a></td> {% endcomment %}
+                <td><button  data-product={{item.product.id}} data-action="remove" type="button" class="btn btn-primary update-cart"><a style="color:white;text-decoration:none" href="{%url 'cart'%}">Remove</a></button></td>
+                {% comment %}  this is wrong becauise we have done the static and all the process w ejust need to acces image as a feild of product which has a realtionship with order item<td><img src={%static "{{item.product.imageUrl}}"%}></td> {% endcomment %}
+                <td><img id="thumbnail" src="{{item.product.imageUrl}}" alt="bhandni" ></td>
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.price|floatformat:2}}</td>
+                <td><input class="update-cart" data-product={{item.product.id}} data-action="add" type="number" value="{{item.quantity}}"></td>
+
+                <td>{{item.get_total}}</td>
+                {% comment %} <td>{{item.product.stock}}</td> {% endcomment %}
+                {% comment %} <td>{{item.get_stock}}</td> {% endcomment %}
+            </tr>
+        </tbody>
+        {%endfor%}
+        {%else%}
+    <h1> Bhai/Behen Kuch kharid to lo pahle! </h1>
+    {%endif%}
+        {% comment %} <tbody>
+            <tr>
+                <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                <td><img src={%static "images/product2.jfif" alt="bhandni"%}></td>
+                <td>Golden Net</td>
+                <td>$118</td>
+                <td><input type="number" value="1"></td>
+                <td>$118</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                <td><img src={%static "images/product3.jfif" alt="AJRAK"%}></td>
+                <td>Ajrak KatcH</td>
+                <td>$118</td>
+                <td><input type="number" value="1"></td>
+                <td>$118</td>
+            </tr>
+        </tbody> {% endcomment %}
+    </table>
+
+   </section>
+   {%if  flag%}
+   <section id="cart-add" class="section-p1">
+    <div id="coupon">
+        <h3>
+            Apply Coupon
+        </h3>
+        <div>
+            <input type="text" placeholder="Enter Your Coupon">
+            <button class="normal">Apply</button>
+        </div>
+    </div>
+    <div id="total">
+        <h3>Cart Total</h3>
+        <table>
+          
+            
+            {% comment %} <tr><td>Shipping Cost</td></tr>
+            <tr> <td>$5</td></tr> {% endcomment %}
+            <tr><strong><td>Total</td></strong></tr>
+            <tr><td>{{order.get_cart_total}}</td> </tr>
+            <tr><strong><td>Quantity</td></strong></tr>
+            <tr><strong><td>{{order.get_cart_quantity}}</td></strong></tr>
+            {% comment %} <tr><strong><td>Stock</td></strong></tr> {% endcomment %}
+            
+        </table>
+        <a  class="btn btn-outline-success" href="{% url 'checkOut'%}">Checkout</a>
+    </div>
+    
+   </section>
+   {%endif%}
+</body>
+<script  type="text/javascript" src="{% static  'js/cart.js' %}" >
+       
+</script>
+{% endblock content %}

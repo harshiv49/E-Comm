@@ -1,0 +1,25 @@
+/* #logo{
+} */
+
+body{
+    background-color: #ebeff5;
+    overflow-x:hidden ;
+}
+
+
+#total-orders{
+    background-color: #4cb4c7;
+    color:rgb(253, 252, 254)
+}
+
+
+#orders-delivered{
+    background-color: #7abecc;
+     color:rgb(251, 250, 254)
+
+}
+
+#orders-pending{
+    background-color: #7CD1C0;
+    color:rgb(253, 253, 253)
+}

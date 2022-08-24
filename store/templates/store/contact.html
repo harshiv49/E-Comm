@@ -1,0 +1,131 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style2.css'%}">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="header">
+      <a href="#"><img id="image1" src="{%static 'images/logo.jfif'%}" alt="logo" /></a>
+      <ul id="navbar">
+        <li><a href="index.html">Home </a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="aboutus.html">About us</a></li>
+        <li><a class="active" href="contact.html">Contact us</a></li>
+        <li>
+          <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+        </li>
+      </ul>
+    </section>
+    <div class="Build2">
+      #let's talk<br />
+      <p id="text">
+        Book an appointment with the store manager today for all ur
+        perosonalised matching or dying needs
+      </p>
+    </div>
+
+    <section id="contact-details" class="section-p1" >
+      <div class="details">
+        <span style="color:rgb(107, 104, 104);">Get In Touch</span>
+        <h2>Visit Our Store Today</h2>
+        <h4>
+          Or book an appointment from our sales team today <br />
+          for a personalized store like shopping experience
+        </h4>
+        <h3 style="font-weight: 700"><span>Head Branch</span></h3>
+        <div>
+          <li>
+            <i class="fal fa-map">
+            </i>
+              <p>
+                Lg 40 Abhinadan Ac Market Near Rangila Park Ghod Dod Road,
+                Surat-395007
+              </p>
+            
+          </li>
+          <li>
+            <i class="far fa-envelope"> </i>
+              <p>
+                harshiv49@gmail.com
+              </p>
+           
+          </li>
+          <li>
+            <i class="fas fa-phone-alt"></i>
+              <p >
+                +91-9106878925
+              </p>
+            
+          </li>
+          <li>
+            <i class="far fa-clock"></i>
+              <p>
+                Monday To Saturday:11.00 am to 9.pm 
+              </p>
+            
+          </li>
+        </div>
+        
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.430465348995!2d72.80122901744384!3d21.17505210000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04d00654e33b9%3A0x4a5cdaec59506ce8!2sAbhinandan%20Ac%20Market!5e0!3m2!1sen!2sin!4v1658340370289!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    </section>
+
+    <section id="form-details">
+        <form action="{% url 'ContactUs' %}" method="POST" >
+          {% csrf_token %}
+            <span>LEAVE A MESSAGE</span>
+            <h2>We would love to hear from you</h2>
+            {%if not flag %}
+            <input type="text" name="name" placeholder="Your Name">
+            <input type="text" name="email" placeholder="E-mail">
+            {%endif%}
+            <input type="text" name="subject" placeholder="Subject">
+            <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn-outline-secondary add-btn" style="background-color: teal;color:white;">Submit </button>
+        </form>
+        <div class="people">
+            <div>
+                <img src="images/hero2.jpg" alt="nishith">
+                
+                <p ><span>Nishith Thakkar</span>Store Owner
+                <br>Phone:9825309940
+            <br>nishiththakkar14@gmail.com</p>
+            </div>
+            <div>
+                <img src="images/hero2.jpg" alt="manisha">
+                
+                <p ><span>Manisha Thakkar</span>Store Owner
+                <br>Phone:9327047019
+            <br>manishajt16@gmail.com</p>
+            </div>
+            <div>
+                <img src="images/hero3.jpg" alt="harshiv">
+                
+                <p><span>Harshiv Thakkar</span>Web Devloper
+                <br>Phone:9106878925
+                <br>harshiv49@gmail.com</p>
+            </div>
+        </div>
+
+    </section>
+  </body>
+</html>

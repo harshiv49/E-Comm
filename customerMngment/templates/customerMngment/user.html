@@ -1,0 +1,50 @@
+{%extends 'customerMngment/main.html'%}
+{%load static%}
+{%block content%}
+<section class="header">
+	<a href="#"><img id="image1" src="{%static 'images/logo.jfif'%}" alt="logo"></a> 
+	 <ul id="navbar">
+		 <li><a  href="{%url 'home'%}">Home </a></li>
+		 <li><a href="/shop">Shop</a></li>
+		 <li><a href="/blog">Blog</a></li>
+		 <li><a href="/aboutUs">About us</a></li>
+		 <li><a href="/contact">Contact us</a></li>
+		 <li><a  href="/cart"><i class="far fa-shopping-bag"></i></a></li> 
+	 </ul>
+ </section>
+{% comment %} {%url 'home' %} {% endcomment %}
+{%include 'customerMngment/status.html'%}
+{%for order in orders%}
+
+	<label for="Order">Order</label>
+ <br>
+	{%endfor%}
+<div class="row">
+	<div class="col" >
+		<div class="card card-body" >
+			<table class="table table-sm">
+				<tr>
+					
+					<th>Product</th>
+					<th>Category</th>
+					<th>Date Ordered</th>
+					<th>Status</th>
+
+					
+				</tr>
+				{%for order in orders%}
+				<tr>
+					
+					<td>{{order.product}}</th>
+					<td>{{order.product.category}}</td>
+					<td>{{order.date_ordered}}</td>
+					<td>{{order.status}}</td>
+
+					
+				</tr>
+				{%endfor%}
+			</table>
+		</div>
+	</div>
+</div>
+{%endblock content%}

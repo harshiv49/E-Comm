@@ -1,0 +1,176 @@
+{% extends 'store/index.html' %}
+{% load static %} 
+{% comment %} <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}"> 
+
+<h3>HOME </h3>
+
+<img src="{%static 'images/hero.jpg'%}">  {% endcomment %}
+
+
+  
+{% comment %} <div style="text-align:center;font-size:22px;line-height:30px;" >Bhandni</div> {% endcomment %}
+{% block content %}
+
+{% comment %} fix this {% endcomment %}
+{% if  num.0 == 1%}
+<h1 style="text-align:center;font-size:22px;line-height:40px;">Bhandni</h1>
+
+{% elif num.0 == 2 %}
+<h1 style="text-align:center;font-size:22px;line-height:40px;">Leggings</h1>
+{% elif num.0 == 3 %}
+<h1 style="text-align:center;font-size:22px;line-height:40px;">Net</h1>
+{% endif %}
+
+<div class="row">
+    {%for bhndi in bhandni %}
+    <div class="col-lg-4 ">
+         
+        <div class="box-element goods">
+            <img id="thumbnail" src="{{bhndi.imageUrl}}" alt="bhandni" >
+            <h5><strong>{{bhndi.name}}</strong></h5>
+            <h6><strong>{{bhndi.description}}</strong></h6>
+            <hr>
+            {% if bhndi.stock > 0 %}
+            <button   data-product={{bhndi.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+            {% elif bhndi.stock < 10 %}
+            <button class="btn btn-outline-secondary add-btn">Notify Me</button>
+            {%endif%} 
+            <a class="btn btn-outline-success" href="{%url 'singleProduct' bhndi.id%}">View</a>
+            <h4 style="display:inline-block;float:right"><span>&#8377;</span>{{bhndi.price}}</h4>
+            {% if bhndi.stock == 0 %}
+            <h6 style="color:red;">Out  of Stock</h6>
+           
+            {% elif bhndi.stock < 2 %}
+            <h6 style="color:red;">Running out of Stock!</h6>
+            
+            {%endif%}
+        </div>
+       
+    </div>
+    {%endfor%}
+    
+  
+</div>
+
+
+<div class="row">
+    
+    {%for lgns in leggings %}
+    <div class="col-lg-4 ">
+         
+        <div class="box-element goods">
+            <img id="thumbnail" src="{{lgns.imageUrl}}" alt="leggings" >
+            <h5><strong>{{lgns.name}}</strong></h5>
+            <h6><strong>{{lgns.description}}</strong></h6>
+            <hr>
+            {% if lgns.stock > 0 %}
+            <button   data-product={{lgns.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+            {% elif lgns.stock < 10 %}
+            <button class="btn btn-outline-secondary add-btn">Notify Me</button>
+            {%endif%} 
+            <a class="btn btn-outline-success" href="{%url 'singleProduct' lgns.id%}">View</a>
+            <h4 style="display:inline-block;float:right"><span>&#8377;</span>{{lgns.price}}</h4>
+            {% if lgns.stock == 0 %}
+            <h6 style="color:red;">Out  of Stock</h6>
+           
+            {% elif lgns.stock < 2 %}
+            <h6 style="color:red;">Running out of Stock!</h6>
+            {%endif%}
+        </div>
+       
+    </div>
+    {%endfor%}
+  
+
+
+  
+</div>
+
+
+
+<div class="row">
+    {%for n in net %}
+    <div class="col-lg-4 ">
+         
+        <div class="box-element goods">
+            <img id="thumbnail" src="{{n.imageUrl}}" alt="bhandni" >
+            <h5><strong>{{n.name}}</strong></h5>
+            <h6><strong>{{n.description}}</strong></h6>
+            <hr>
+            {% if n.stock > 0 %}
+            <button data-product={{n.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+            {% elif n.stock < 10 %}
+            <button class="btn btn-outline-secondary add-btn">Notify Me</button>
+            {%endif%} 
+            <a class="btn btn-outline-success" href="{%url 'singleProduct' n.id%}">View</a>
+            <h4 style="display:inline-block;float:right"><span>&#8377;</span>{{n.price}}</h4>
+            {% if n.stock == 0 %}
+            <h6 style="color:red;">Out  of Stock</h6>
+           
+            {% elif n.stock < 2 %}
+            <h6 style="color:red;">Running out of Stock!</h6>
+            
+            {%endif%}
+        </div>
+       
+    </div>
+    {%endfor%}
+ 
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+    {% comment %} <section id="product1">    
+        <div class="pro-container">
+        {% for p1 in products1  %} 
+       <div class="pro1">
+              <img class="image5" src={%static "images/product2.jfif"  alt="bhandni"%}>
+              <img class="image6" src={%static "images/hero.jpg" alt="bhandni"%}>
+            <h4> {{p1.name}}</h4>
+            <div class="star1">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+            <h4>{{p1.price}}</h4>
+            <div> <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</section> {% endcomment %}
+ 
+
+        {% comment %} <div class="pro2">
+            <img id="image4" src={%static "images/product3.jfif" alt="ajrak"%}>
+            <!-- <img id="image8" src="images/hero4.jfif" alt="ajrak"> -->
+            <h4>Ajrak Kutch</h4>
+            <div class="star2">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+            <h4>30$</h4>
+            <div> <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+        </div> {% endcomment %}
+   
+    
+
+
+
+
+{% endblock content %}

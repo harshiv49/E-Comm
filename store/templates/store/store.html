@@ -1,0 +1,158 @@
+{% extends 'store/index.html' %}
+{% load static %} 
+{% comment %} <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}"> 
+
+<h3>HOME </h3>
+
+<img src="{%static 'images/hero.jpg'%}">  {% endcomment %}
+
+
+{% block content %}
+<section class="header">
+    <a href="#"><img id="image1" src="{%static 'images/logo.jfif'%}" alt="logo"></a> 
+    <ul id="navbar">
+        <li><a  href="{%url 'home'%}">Home </a></li>
+        <li><a class="active" href="{%url 'store'%}">Shop</a></li>
+        <li><a href="{%url 'blog'%}">Blog</a></li>
+        <li><a href="aboutus.html">About us</a></li>
+        <li><a href="{%url 'ContactUs'%}">Contact us</a></li>
+        <li><a href="{%url 'cart'%}"><i class="far fa-shopping-bag"></i></a></li> 
+        
+    </ul>
+ </section>
+ <div class="Build">
+    #stay at home<br>
+    <p id="text">Why roam around in stores this monsoon when hand crafted designs can reach your doorstep !</p>
+    </div>
+
+<div class="row">
+    
+    {% comment %} {%for product in products%} {% endcomment %}
+    {%for product in pro%}
+    <div class="col-lg-4 ">
+         
+        <div class="box-element goods">
+            <img id="thumbnail" src="{{product.imageUrl}}" alt="bhandni" >
+            <h5><strong>{{product.name}}</strong></h5>
+            <h6><strong>{{product.description}}</strong></h6>
+            <hr>
+            {% if product.stock > 0 %}
+            {% comment %} we wanna add this class update-cart so that we can call it later to add some functionality in it with the help of js  we also add custom attributes data-product data-action {% endcomment %}
+            <button  data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+            {% elif product.stock  < 10 %}
+            <button class="btn btn-outline-secondary add-btn">Notify Me</button>
+            {%endif%} 
+            <a class="btn btn-outline-success" href="{%url 'singleProduct' product.id%}">View</a>
+            <h4 style="display:inline-block;float:right"><span>&#8377;</span>{{product.price}}</h4>
+                 {% if product.stock < 0 %}
+            <h6 style="color:red;">Out  of Stock</h6>
+           
+            {% elif product.stock < 10 %}
+            <h6 style="color:red;">Running out of Stock!</h6>
+            
+            {%endif%}
+        </div>
+       
+    </div>
+    {%endfor%}
+    
+
+  
+</div>
+
+{% comment %} <img src="" alt="shopping_bag">
+<h1>You havent ordered anything yet once take a look at our catalog for even more options</h1>
+<h2>Cant Yet find what you are looking or have specific requirements dont worry </h2>
+<h3>Book an appointment Today </h3>
+<p>catalog</p>
+<p>Pass in  recently viewed products</p>
+<div>Make a categories section</div> {% endcomment %}
+
+
+
+
+
+
+{% comment %} 
+paginator variables 
+<p>{{pro}}</p>
+<p> has previous: {{pro.has_previous}}</p>
+<p> has next: {{pro.has_next}}</p>
+<p> Current page: {{pro.number}}</p>
+<p> Number Of Pages : {{pro.paginator.num_pages}}</p> {% endcomment %}
+
+{% comment %} <section id="pagination" class="section-p1">
+    <a  href="#">1</a>
+    <a  href="#">2</a>
+    <a  href="#"><i class="fa fa-long-arrow-alt-right"></i></a>
+
+</section> {% endcomment %}
+
+<section id="pagination" class="section-p1">
+    {%if not pro.has_previous %}
+    <a href="?page=1">{{pro.number}}</a>
+    {%endif %}
+    {%if pro.has_previous %}
+    <a href="?page=1"><i class="fa fa-long-arrow-alt-left"></i></a>
+    <a style="margin-left:3px;color:white;" href="?page={{pro.previous_page_number}}">{{pro.number}}</a>
+    
+{%endif %}
+
+
+{%if pro.has_next %}
+  
+    <a style="margin-left:3px;color:white;" href="?page={{pro.paginator.num_pages}}">{{pro.next_page_number}}</a>
+    <a href="?page={{pro.next_page_number}}"><i class="fa fa-long-arrow-alt-right"></i></a>
+    
+{%endif %}
+
+ </section>
+
+
+
+    {% comment %} <section id="product1">    
+        <div class="pro-container">
+        {% for p1 in products1  %} 
+       <div class="pro1">
+              <img class="image5" src={%static "images/product2.jfif"  alt="bhandni"%}>
+              <img class="image6" src={%static "images/hero.jpg" alt="bhandni"%}>
+            <h4> {{p1.name}}</h4>
+            <div class="star1">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+            <h4>{{p1.price}}</h4>
+            <div> <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</section> {% endcomment %}
+ 
+
+        {% comment %} <div class="pro2">
+            <img id="image4" src={%static "images/product3.jfif" alt="ajrak"%}>
+            <!-- <img id="image8" src="images/hero4.jfif" alt="ajrak"> -->
+            <h4>Ajrak Kutch</h4>
+            <div class="star2">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+            <h4>30$</h4>
+            <div> <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+        </div> {% endcomment %}
+   
+    
+
+
+
+
+{% endblock content %}

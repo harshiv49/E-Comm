@@ -1,0 +1,135 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/style1.css'%}">
+        <link rel="stylesheet" href="{% static 'css/style2.css'%}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    </head>
+<body>
+    <section class="header">
+        <a href="#"><img id="image1" src="{%static 'images/logo.jfif'%}" alt="logo"></a> 
+         <ul id="navbar">
+             <li><a  href="index.html">Home </a></li>
+             <li><a class="active" href="shop.html">Shop</a></li>
+             <li><a href="blog.html">Blog</a></li>
+             <li><a href="aboutus.html">About us</a></li>
+             <li><a href="contact.html">Contact us</a></li>
+             <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li> 
+             
+         </ul>
+     </section>
+     
+<section id="prodetails" class="section-p1">
+    <div class="single-pro-image">
+        <img src="{{product.imageUrl}}" alt="Net" width="100%" height="400px" id="MainImage">
+        <div class="small-image-group">
+            <div class="small-image-col">
+                <img src="{{productimages.0.imageUrl}}"  width="100%" height="100%" class="small-img" alt="net">
+            </div>
+            <div class="small-image-col">
+                <img src="{{productimages.1.imageUrl}}"  width="100%"  height="100%" class="small-img" alt="net">
+            </div>
+            <div class="small-image-col">
+                <img src="{{productimages.2.imageUrl}}"  width="100%" height="100%" class="small-img" alt="net">
+            </div>
+            <div class="small-image-col">
+                <img src="{{productimages.3.imageUrl}}"  width="100%" height="100%" class="small-img" alt="net">
+            </div>
+            
+        </div>
+    </div>
+    <div class="single-pro-deatils">
+        <h6 style="font-weight:300;">{{product.name}}</h6>
+        <h4>{{product.description}}</h4>
+        <h2 style="font-weight:600;">{{product.price}}</h2>
+        <select >
+            <option >Select Size</option>
+            <option >S</option>
+            <option >M</option>
+            <option >L</option>
+            <option >XL</option>
+   
+        </select>
+        <br>
+        <input type="number" value="1">
+        <button  data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart add-order">Add to cart</button>
+        <h4>Product Details</h4>
+        <span>
+           we bring to you the widest range of net dupattas with a variety of colour options with different materials be it pure silk semi pure silk cotton etc. for specific requirements and dying please contact our store 
+        </span>
+        <div>
+            {%for categoryProduct in categoryProducts  %}
+            <a href="{%url 'singleProduct' categoryProduct.id%}"><img src="{{categoryProduct.imageUrl}}" alt="ajrak" style="width:100px;height:100px;"> </a>
+            {%endfor%}
+        </div>
+
+    </div>
+    
+    </section>
+    {% comment %} get random Products {% endcomment %}
+     <h1 style="text-align: center;">Featured Products </h1>
+        <p>Blossom ur Wedding this summer</p>
+        <!-- <h1 style="text-align: center;margin-top: 15px;margin-bottom: 0;">Trending Products</h1> -->
+        <div class="row " >
+    
+           {% for product in featuredProducts %}
+            <div class="col-lg-3 ">
+                 
+                <div class="box-element goods">
+                    <img id="thumbnail" src="{{product.imageUrl}}" alt="{{product.name}}" >
+                    <h5><strong>{{product.name}}</strong></h5>
+                    <h6><strong>{{product.description}}</strong></h6>
+                    <hr>
+
+                    <button  class="btn btn-outline-secondary add-btn update-cart add-order">Add to cart</button>
+             
+                   
+                    <a class="btn btn-outline-success" href="#">View</a>
+                    <h5 style="display:inline-block;"><span>&#8377;{{product.price}}</span></h5>
+                    
+               
+                </div>
+               
+            </div>
+            {% endfor %}
+    </div>
+  
+<script>
+    var MainImage=document.getElementById("MainImage")
+    var smallimg=document.getElementsByClassName("small-img")
+
+    smallimg[0].onclick=function(){
+        MainImage.src=smallimg[0].src
+    }
+    var MainImage=document.getElementById("MainImage")
+    var smallimg=document.getElementsByClassName("small-img")
+    
+    smallimg[1].onclick=function(){
+        MainImage.src=smallimg[1].src
+    }
+    var MainImage=document.getElementById("MainImage")
+    var smallimg=document.getElementsByClassName("small-img")
+    
+    smallimg[2].onclick=function(){
+        MainImage.src=smallimg[2].src
+    }
+    var MainImage=document.getElementById("MainImage")
+    var smallimg=document.getElementsByClassName("small-img")
+    
+    smallimg[3].onclick=function(){
+        MainImage.src=smallimg[3].src
+    }
+
+</script>
+<script  type="text/javascript" src="{% static  'js/cart.js' %}" >
+       
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+.back{
+    margin:10px;
+    padding-top:10px;
+    display: flex;
+    justify-content: space-between;
+}
+.row{
+    width:100%;
+}
+#hidden{
+    display:none;
+}

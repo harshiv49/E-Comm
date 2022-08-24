@@ -1,0 +1,424 @@
+{% extends 'store/index.html' %}
+{% load static %} 
+{% comment %} <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}"> 
+
+<h3>HOME </h3>
+
+<img src="{%static 'images/hero.jpg'%}">  {% endcomment %}
+
+{% comment %} stick navbar fonts and images second carousel and whatsapp icon  {% endcomment %}
+{% block content %}
+
+<body style="width:100%;">
+
+    <section class="header">
+               <a href="#"><img id="image1" src="images/logo.jfif" alt="logo"></a> 
+               <div >
+        <ul id="navbar">
+            <li><a class="active" href="index.html">Home </a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li> 
+            <div style="display:flex;border-radius:25px;">
+                <form action="{%url 'search-products'%}" method="POST">
+                    {% csrf_token %}
+            <input style="width:130px;height:37px;" name="searched" placeholder="Search">
+            <button style="border:none;background-color:teal;color:whitesmoke;padding:6px;" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <a href="#" id="close"><i class="far fa-times"></i></a>
+
+        </ul>
+    </div>
+    <div id="mobile">
+        <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+        <span id="clickAbleAwesomeFont"><i id="bar" class="fas fa-outdent"></i></span>
+        
+
+    </div>
+   
+    </section>
+    
+     
+    <section class="hero" style="width:100%;">
+   
+        <h4> Welcome To Mahalaxmi</h4>
+         <h2 class="home_head"><!--State Of The Art Collection -->
+            
+            Exclusive Handcrafted Designs
+        </h2>
+        <!-- <p class="home_p">Become a Member 
+            Super Value Deals
+            Free Delivery
+            //make a banner
+        </p> -->
+        <div class="i_am_parent_button"> 
+        <button id="i_am_button" style="float:center;">Shop Now</button>
+    </div>
+
+    </section>  
+
+    <h2 style="text-align: center;font-size:30px;font-weight:700;margin-top:70px;">Featured Products </h2>
+    <p style="text-align: center;padding-bottom:30px;">Blossom ur Wedding this summer</p>
+    <section>
+    <div id="carouselExampleIndicators" class="carousel slide"  data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row" style="margin:20px;">
+                {%for product in carousel1%}
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods" >
+                        <img id="thumbnail" src="{{product.imageUrl}}" alt="bhandni" >
+                        <h5><strong>{{product.name}}</strong></h5>
+                        <h6><strong>{{product.description}}</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;font-size:20px;"><span>&#8377;{{product.price}}</span></h4>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row" style="margin:20px;">
+                {%for product in carousel2%}
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods" >
+                        <img id="thumbnail" src="{{product.imageUrl}}" alt="bhandni" >
+                        <h5><strong>{{product.name}}</strong></h5>
+                        <h6><strong>{{product.description}}</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;font-size:20px;"><span>&#8377;{{product.price}}</span></h4>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row" style="margin:20px;">
+                {%for product in carousel3%}
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods" >
+                        <img id="thumbnail" src="{{product.imageUrl}}" alt="bhandni" >
+                        <h5><strong>{{product.name}}</strong></h5>
+                        <h6><strong>{{product.description}}</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;font-size:20px;"><span>&#8377;{{product.price}}</span></h4>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev"  href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+     
+
+</section>
+<section >
+    <div id="carouselExampleIndicators1" class="carousel slide"  data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row" style="margin:20px;">
+                {%for product in carousel4%}
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods" >
+                        <img id="thumbnail" src="{{product.imageUrl}}" alt="bhandni" >
+                        <h5><strong>{{product.name}}</strong></h5>
+                        <h6><strong>{{product.description}}</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;font-size:20px;"><span>&#8377;{{product.price}}</span></h4>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row" style="margin:20px;">
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods" >
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;999</span></h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods">
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;</span>999</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods">
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;</span>999</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods">
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;</span>999</h4>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods" >
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;999</span></h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods">
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;</span>999</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods">
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;</span>999</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 responsive_products">
+                    <div class="box-element goods">
+                        <img id="thumbnail" src="images/product1.jfif" alt="bhandni" >
+                        <h5><strong>Kutch Bandhani</strong></h5>
+                        <h6><strong>This is Kutch Bandhani</strong></h6>
+                        <hr>
+                        <button    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="display:inline-block;"><span>&#8377;</span>999</h4>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev"  href="#carouselExampleIndicators1" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+     
+
+</section>
+<h1 style="text-align: center;font-size:30px;font-weight:800;margin-top:70px;">Our Features</h1>
+<section id="feature">
+    <div class="fe-box">
+        <img class="image3" src="images/fe1.jfif"> 
+        <h6 id="head1" >Speed Shipping</h6>
+    </div> 
+    <div class="fe-box">
+        <img class="image3" src="images/contactfeature.avif"> 
+        <h6 id="head2" >Contact Us</h6>
+    </div> 
+    <div class="fe-box">
+        <img class="image3" src="images/feature2.jpg"> 
+        <h6 id="head3" >24/7 SUPPORT</h6>
+    </div> 
+    <div class="fe-box">
+        <img class="image3" src="images/feature5.jfif"> 
+        <h6 id="head4" >Online Order</h6>
+    </div> 
+    <div class="fe-box">
+        <img class="image3" src="images/fetaure4.png"> 
+        <h6 id="head5" >Save Money</h6>
+    </div> 
+
+</section>
+    
+    
+
+    
+  
+  
+          
+         
+            
+            <!-- <div class="pro1">
+                  <img class="image5" src="images/product2.jfif" alt="bhandni">
+                  <img class="image6" src="images/hero.jpg" alt="bhandni">
+                <h4>Golden Net</h4>
+                <div class="star1">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h4>30$</h4>
+                <div> <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+            </div> -->
+            <!-- <div class="pro2">
+                <img id="image4" src="images/product3.jfif" alt="ajrak">
+                <img id="image8" src="images/hero4.jfif" alt="ajrak"> -->
+                <!-- <h4>Ajrak Kutch</h4>
+                <div class="star2">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h4>30$</h4>
+                <div> <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+            </div>
+         
+        
+  
+    </section>   -->
+
+    <section class="banner" style="margin-top:40px;">
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>Yarn Available!</h4>
+            <h2>Exclusive Lays </h2>
+            <p>Unique Fabrics</p>
+            <button>Learn More</button>
+        </div>
+
+    </section>
+    <section id="banner1" class="section-p1">
+        <div class="bannerbox">
+            <h4>This Festive Season</h4>
+            <h2>Buy Our Classics</h2>
+            <p>Specially  Brainstormed for you</p>
+            <button>Explore</button>
+        </div>
+
+    </section>
+</section>
+
+<section class="banner2" >
+    <section id="sm-banner1-1" class="section-p1">
+        <div class="banner-box1-1">
+            <h4>Yarn Available!</h4>
+            <h2>Exclusive Lays </h2>
+            <p>Unique Fabrics</p>
+            <button>Learn More</button>
+        </div>
+
+    </section>
+    <section id="sm-banner1-2" class="section-p1">
+        <div class="banner-box1-2">
+            <h4>Yarn Available!</h4>
+            <h2>Exclusive Lays </h2>
+            <p>Unique Fabrics</p>
+            <button>Learn More</button>
+        </div>
+
+    </section>
+    <section id="sm-banner1-3" class="section-p1">
+        <div class="banner-box1-3">
+            <h4>Yarn Available!</h4>
+            <h2>Exclusive Lays </h2>
+            <p>Unique Fabrics</p>
+            <button>Learn More</button>
+        </div>
+
+    </section>
+
+
+
+</section>
+
+
+    
+
+    <script type="text/javascript" >
+        const bar=document.getElementById('bar');
+        const nav=document.getElementById('navbar');
+        const close=document.getElementById('close');
+        console.log(bar)
+        if(bar){
+            bar.addEventListener('click',()=>{
+                console.log("i am clicking")
+                nav.classList.add('active2')
+            })
+        }
+        if (close){
+            close.addEventListener('click',()=>{
+                console.log("i am clicking")
+                nav.classList.remove('active2')
+            })
+        }
+            
+       
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+{% endblock content %}

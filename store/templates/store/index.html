@@ -1,0 +1,197 @@
+{% load static %}
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style2.css'%}"> 
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style1.css'%}"> 
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+    <script  type="text/javascript" src="{% static  'js/cart.js' %}" >
+       
+    </script>
+    <script  type="text/javascript">
+        var user='{{request.user}}'
+
+                
+    </script>
+    <script>
+    function getCookie(name) {
+        // Split cookie string and get all individual name=value pairs in an array
+        var cookieArr = document.cookie.split(";");
+
+        // Loop through the array elements
+        for(var i = 0; i < cookieArr.length; i++) {
+            var cookiePair = cookieArr[i].split("=");
+
+            /* Removing whitespace at the beginning of the cookie name
+            and compare it with the given string */
+            if(name == cookiePair[0].trim()) {
+                // Decode the cookie value and return
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+
+        // Return null if not found
+        return null;
+    }
+    var cart = JSON.parse(getCookie('cart'))
+
+    if (cart == undefined){
+        cart = {}
+        console.log('Cart Created!', cart)
+        document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    }
+    console.log('Cart:', cart)
+   </script>
+</head>
+<body>
+    {% comment %} the differnce between js in head and js in body is js in head is loaded early {% endcomment %}
+   
+     <!-- <section class="hero">
+   
+        <h4>Welcome To Mahalaxmi</h4>
+        <h2>State Of The Art Collection
+            Exclusive Handcrafted Designs
+        </h2>
+        <p>Become a Member 
+            Super Value Deals
+            Free Delivery
+        </p>
+
+
+    </section>  -->
+
+    {% comment %} <section id="feature">
+        <div class="fe-box">
+            <img class="image3" src="images/fe1.jfif"> 
+            <h6 id="head1" >Speed Shipping</h6>
+        </div> 
+        <div class="fe-box">
+            <img class="image3" src="images/feature5.jfif"> 
+            <h6 id="head1" >Contact Us</h6>
+        </div> 
+        <div class="fe-box">
+            <img class="image3" src="images/feature2.jpg"> 
+            <h6 id="head1" >24/7 SUPPORT</h6>
+        </div> 
+        <div class="fe-box">
+            <img class="image3" src="images/feature3.png"> 
+            <h6 id="head1" >Online Order</h6>
+        </div> 
+        <div class="fe-box">
+            <img class="image3" src="images/fetaure4.png"> 
+            <h6 id="head1" >Save Money</h6>
+        </div> 
+    </section>
+
+    <section id="product1"> 
+
+        <h2>Featured Products </h2>
+        <p>Blossom ur Wedding this summer</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img id="image4" src="images/product1.jfif" alt="bhandni">
+                <h4>Kutch Bhandni</h4>
+                <div class="star">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h4>30$</h4>
+            </div>
+       
+        <div> <a href="#"><i class="fal fa-shopping-cart"></i></a>
+        </div>
+    </div>
+    </section>
+<section id="banner">
+    <h1 id="chupchap">
+        One  time Offer
+    </h1>
+    <h3>
+        This Festive Season flat 15% Off
+    </h3>
+</section> {% endcomment %}
+{%block content %}
+
+{%endblock content%}
+<footer class="section-p1 " style="display: flex;">
+    <div class="column1" style="text-align:left;">
+        <img src="/static/images/logo.jfif" alt="logo" class="footer-logo">
+        <h4> Contact</h4>
+        <p><strong>Address1:</strong>Lg 40, Abhinandan Ac Market,Ghod Dod Road ,Near Rangilla Park, Surat</p>
+        <p><strong>Address2:</strong>Lavanya Shopping Mall, Near Ashok Pan House, CityLight, Surat</p>
+        <p><strong>Phone:</strong>9327047019</p>
+        <p><strong>Hours:</strong>Morning:11:00am to 9:00pm </p>
+        <div class="follow" style="padding-top:10px;">
+            <h4>Follow Us</h4>
+            <div class="icon" >
+               <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-f"></i></a>
+               <a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram"></i></a>
+               <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-google"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div  class="column2">
+        <h4>About</h4>
+        <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Delivery Informations</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">Contact Us </a></li>
+    </ul>
+
+    </div>
+
+    <div  class="column2" >
+        <h4>My account </h4>
+        <ul>
+        <li><a href="" >Sign In</a></li>
+        <li><a href="#">View Cart</a></li>
+        <li><a href="#">My WishList</a></li>
+        <li><a href="#">Track My orders</a></li>
+        <li><a href="#">Helps</a></li>
+    </ul>
+
+    </div>
+    <div  class="column2 payment">
+        <h4>Payments</h4>
+        <p>Secured Payment Gateways</p>
+       <img src="/static/images/payment gateway.png" alt="paypal " class="paymentImage">
+       
+    </ul>
+
+    </div>
+
+</footer>
+
+<div class="copyright" style="text-align:center;color:gray;padding:0px;margin:0px;">© 2022 Mahalaxmi Matching Center Copyright Reserved </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <script  type="text/javascript" src="{% static  'js/cart.js' %}" >
+       
+    </script>
+    <section class="footer">
+        <a href=" https://wa.me/+919327047019?text=Iam%20interested%20in%20your%20products%20on%20your%20website" target="_blank">
+
+            <img id="whatsapp_logo" style="float:right;width:100px;height:100px;padding:10px;margin:10px;border-radius:150px;}" src="{%static 'images/whatsapp logo.jpg'%}" alt="whatsapp_logo">
+        </a>
+    </section>
+</body>
+</html>

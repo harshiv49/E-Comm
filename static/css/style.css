@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+*{
+    margin:0;
+    font-family:'Outfit', sans-serif;
+}
+.Build{
+    margin:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background: rgba(0, 0, 0, 0.3) url('/static/images/cartmaidaldofilal.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    color:whitesmoke;
+    font-size:60px;
+    text-align: center;
+    font-weight:700;
+}
+.text{
+    color:whitesmoke;
+    font-size:30px;
+    text-align: center;
+    font-weight:200;
+}
+.section-p1{
+    padding:40px 80px;
+}
+.section-m1{
+    padding:40px 0;
+}
+#cart table{
+    /* Text will never wrap to the next line.  */
+    white-space: nowrap;
+    /*The main benefit of table-layout: fixed; is that the table renders much faster. On large tables, users will not see any part of the table until the browser has rendered the whole table.*/
+    table-layout: fixed;
+    /* The border-collapse property sets whether table borders should collapse into a single border or be separated as in standard HTML. */
+    border-collapse:collapse;
+    width:100%;
+
+}
+#cart table img{
+    width:90px;
+    height:110px;
+}
+#cart table td:nth-child(1){
+    width: 100px;
+    text-align: center;
+}
+#cart table td:nth-child(2){
+    width: 150px;
+    text-align: center;
+}
+#cart table td:nth-child(3){
+    width: 250px;
+    text-align: center;
+}
+#cart table td:nth-child(4){
+    width: 150px;
+    text-align: center;
+}
+#cart table td:nth-child(5){
+    width: 150px;
+    text-align: center;
+
+}
+#cart table td:nth-child(6){
+    width: 150px;
+    text-align: center;
+}
+#cart table td:nth-child(5) input{
+width: 70px;
+padding:10px 5px 10px 15px;
+}
+#cart table thead{
+    border:1px solid rgb(231, 231, 228);
+    border-left:none;
+    border-right:none;
+
+}
+#cart table thead td{
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 18px 0;
+    font-size: 13px;
+}
+#cart table tbody  td{
+    font-size: 13px;
+}
+#cart table tbody tr td{
+    padding-top:15px;
+}
+#cart-add{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

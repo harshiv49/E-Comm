@@ -1,0 +1,1 @@
+so we basically make 4 html files one base which will be extended and other 3 for their respective purposes

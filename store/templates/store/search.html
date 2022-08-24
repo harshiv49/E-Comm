@@ -1,0 +1,127 @@
+{%extends 'store/store.html'%}
+{%load static%}
+{%block content%}
+<section class="header">
+    <a href="#"><img id="image1" src="{%static 'images/logo.jfif'%}" alt="logo"></a> 
+     <ul id="navbar">
+         <li><a  href="{%url 'home'%}">Home </a></li>
+         <li><a href="{%url 'store'%}">Shop</a></li>
+         <li><a href="blog.html">Blog</a></li>
+         <li><a href="aboutus.html">Aboutus</a></li>
+         <li><a href="contact.html">Contactus</a></li>
+         <li><a href="{%url 'cart'%}"><i class="far fa-shopping-bag"></i></a></li> 
+         <li><form method="POST" action="{%url 'search-products'%}">
+            {% csrf_token %}
+            <div class="input-group">
+            <div  class="form-outline">
+              <input type="search" name="searched" style="width:150px;" id="form1" placeholder="Search" class="form-control" />
+            </div>
+            <button type="submit" class="btn" style="background-color:teal;color:white;">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+        </li>
+         </li>
+     </ul>
+    
+</section>
+
+    {%if searched and flag%}
+    <h1 style="text-align:center;">Search Results </h1>
+    <div class="row">
+    
+        {% comment %} {%for product in products%} {% endcomment %}
+        {%for product in products1%}
+        <div class="col-lg-4 ">
+             
+            <div class="box-element goods">
+                <img id="thumbnail" src="{{product.imageUrl}}" alt="bhandni" >
+                <h5><strong>{{product.name}}</strong></h5>
+                <h6><strong>{{product.description}}</strong></h6>
+                <hr>
+                
+                {% comment %} we wanna add this class update-cart so that we can call it later to add some functionality in it with the help of js  we also add custom attributes data-product data-action {% endcomment %}
+                {% comment %} <button  data-transaction={{transactionid}} data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button> {% endcomment %}
+                {% if product.stock  < 10 %}
+                <button class="btn btn-outline-secondary add-btn">Notify Me</button>
+                {%endif%} 
+                <a class="btn btn-outline-success" href="{%url 'singleProduct' product.id%}">View</a>
+                <h4 style="display:inline-block;float:right"><span>&#8377;</span>{{product.price}}</h4>
+                     {% if product.stock < 0 %}
+                <h6 style="color:red;">Out  of Stock</h6>
+               
+                {% elif product.stock < 10 %}
+                <h6 style="color:red;">Running out of Stock!</h6>
+                
+                {%endif%}
+            </div>
+           
+        </div>
+        {%endfor%}
+    </div>
+    <h1 style="text-align:center;">View some of our handcrafted products</h1>
+        <div class="row " >
+            
+            {% for product in featuredProducts %}
+             <div class="col-lg-3 ">
+                  
+                 <div class="box-element goods">
+                     <img id="thumbnail" src="{{product.imageUrl}}" alt="{{product.name}}" >
+                     <h5><strong>{{product.name}}</strong></h5>
+                     <h6><strong>{{product.description}}</strong></h6>
+                     <hr>
+    
+                     <button  class="btn btn-outline-secondary add-btn update-cart add-order">Add to cart</button>
+              
+                    
+                     <a class="btn btn-outline-success" href="#">View</a>
+                     <h5 style="display:inline-block;"><span>&#8377;{{product.price}}</span></h5>
+                     
+                
+                 </div>
+                
+             </div>
+             {% endfor %}
+     </div>
+        
+        
+    
+      
+    </div>
+
+
+    {%else %}
+    <h1 style="text-align:center;">We couldnt find any search results </h1>
+    <h1 style="text-align:center;">You might also like </h1>
+    <div class="row " >
+    
+        {% for product in featuredProducts %}
+         <div class="col-lg-3 ">
+              
+             <div class="box-element goods">
+                 <img id="thumbnail" src="{{product.imageUrl}}" alt="{{product.name}}" >
+                 <h5><strong>{{product.name}}</strong></h5>
+                 <h6><strong>{{product.description}}</strong></h6>
+                 <hr>
+
+                 <button  class="btn btn-outline-secondary add-btn update-cart add-order">Add to cart</button>
+          
+                
+                 <a class="btn btn-outline-success" href="#">View</a>
+                 <h5 style="display:inline-block;"><span>&#8377;{{product.price}}</span></h5>
+                 
+            
+             </div>
+            
+         </div>
+         {% endfor %}
+ </div>
+    {%endif%}
+
+    
+    
+
+ 
+
+ {%endblock content%}
